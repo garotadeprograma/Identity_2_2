@@ -29,6 +29,24 @@ namespace Identity_2_2.Controllers
             return View();
         }
 
+        [Authorize(Policy = "PodeExcluir")]
+        public IActionResult AreaRestritaClaim()
+        {
+            return View();
+        }
+
+        [Authorize(Policy = "PodeLer")]
+        public IActionResult AreaRestritaPodeLer()
+        {
+            return View();
+        }
+
+        [Authorize(Policy = "PodeEscrever")]
+        public IActionResult AreaRestritaPodeEscrever()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

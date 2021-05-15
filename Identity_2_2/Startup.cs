@@ -1,4 +1,6 @@
 ﻿using Identity_2_2.Areas.Identity.Data;
+using Identity_2_2.Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Identity_2_2.Extensions.PermissaoNecessaria;
 
 namespace Identity_2_2
 {
@@ -42,6 +45,17 @@ namespace Identity_2_2
                 .AddDefaultUI(Microsoft.AspNetCore.Identity.UI.UIFramework.Bootstrap4)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AppIdentityContext>();
+
+            services.AddAuthorization(options =>
+                {
+                    options.AddPolicy("PodeExcluir", policy => policy.RequireClaim("PodeExcluir"));
+
+                    options.AddPolicy("PodeLer", policy => policy.Requirements.Add(new PermissaoNecessaria("PodeLer")));
+
+                    options.AddPolicy("PodeEscrever", policy => policy.Requirements.Add(new PermissaoNecessaria("PodeEscrever")));
+                });
+
+            services.AddSingleton<IAuthorizationHandler, PermissaoNecessariaHandler>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

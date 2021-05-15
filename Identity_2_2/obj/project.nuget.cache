@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ymim6jpkRWPJgExVumTvxqrFyP9xx63XIDfWuiEQMajYNvuvB9nxZNsW2wnqJxMsSpqDgryIOR6TZu4jQf55Og==",
+  "dgSpecHash": "h1MN28OrvoTXSjTY1hJ6p6BZ1/cf5dtnqZH3hblf+IwggcLj6A/rjzOAjuOmnaQj77OBDqvzDkS4R1UzBeDDJQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\acsil\\OneDrive\\Documentos\\Programacao_Estudos\\Desenvolvedor_io\\Identity\\Identity_2_2\\Identity_2_2\\Identity_2_2.csproj",
+  "projectFilePath": "C:\\Projetos_Estudos\\Desenvolvedor_io\\Dominando_ASP.NET_MVC_Core\\Identity_2_2\\Identity_2_2\\Identity_2_2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\acsil\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\acsil\\.nuget\\packages\\microsoft.aspnetcore\\2.2.0\\microsoft.aspnetcore.2.2.0.nupkg.sha512",

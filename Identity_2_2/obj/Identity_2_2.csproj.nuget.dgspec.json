@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\acsil\\OneDrive\\Documentos\\Programacao_Estudos\\Desenvolvedor_io\\Identity\\Identity_2_2\\Identity_2_2\\Identity_2_2.csproj": {}
+    "C:\\Projetos_Estudos\\Desenvolvedor_io\\Dominando_ASP.NET_MVC_Core\\Identity_2_2\\Identity_2_2\\Identity_2_2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\acsil\\OneDrive\\Documentos\\Programacao_Estudos\\Desenvolvedor_io\\Identity\\Identity_2_2\\Identity_2_2\\Identity_2_2.csproj": {
+    "C:\\Projetos_Estudos\\Desenvolvedor_io\\Dominando_ASP.NET_MVC_Core\\Identity_2_2\\Identity_2_2\\Identity_2_2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\acsil\\OneDrive\\Documentos\\Programacao_Estudos\\Desenvolvedor_io\\Identity\\Identity_2_2\\Identity_2_2\\Identity_2_2.csproj",
+        "projectUniqueName": "C:\\Projetos_Estudos\\Desenvolvedor_io\\Dominando_ASP.NET_MVC_Core\\Identity_2_2\\Identity_2_2\\Identity_2_2.csproj",
         "projectName": "Identity_2_2",
-        "projectPath": "C:\\Users\\acsil\\OneDrive\\Documentos\\Programacao_Estudos\\Desenvolvedor_io\\Identity\\Identity_2_2\\Identity_2_2\\Identity_2_2.csproj",
+        "projectPath": "C:\\Projetos_Estudos\\Desenvolvedor_io\\Dominando_ASP.NET_MVC_Core\\Identity_2_2\\Identity_2_2\\Identity_2_2.csproj",
         "packagesPath": "C:\\Users\\acsil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\acsil\\OneDrive\\Documentos\\Programacao_Estudos\\Desenvolvedor_io\\Identity\\Identity_2_2\\Identity_2_2\\obj\\",
+        "outputPath": "C:\\Projetos_Estudos\\Desenvolvedor_io\\Dominando_ASP.NET_MVC_Core\\Identity_2_2\\Identity_2_2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -25,6 +25,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://nuget.ituran.sp/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -117,7 +118,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
