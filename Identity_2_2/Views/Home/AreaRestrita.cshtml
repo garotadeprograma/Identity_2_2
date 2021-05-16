@@ -1,4 +1,5 @@
-﻿Area Restrita
+﻿@using Identity_2_2.Extensions
+Area Restrita
 
 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AreaRestritaClaim">Exclusão de Arquivos - Área Restrita Permissões</a>
 
@@ -6,4 +7,21 @@
 
 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AreaRestritaPodeEscrever">Edição de Arquivos - Área Restrita Permissões</a>
 
+
+@{ 
+    if (this.IfClaim("Custom", "Adicionar")) // #11 Implementando as razor extensions
+    {
+        <p>Acesso permitido</p>
+    }
+}
+
+
+<div>
+    @Html.ActionLink("Escrever", "AreaRestritaPodeEscrever").IfClaimShow(Context, "Custom", "Escrever") @* #12 Utilizar IHtmlContent*@
+</div>
+
+<div>
+    <br />
+    <a href="#" class="btn btn-danger @Html.Raw(this.IfClaimShow("Custom", "Excluir"))">Excluir</a>
+</div>
 

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using static Identity_2_2.Extensions.CustomAuthorization.RequisitoClaimFilter;
 
 namespace Identity_2_2.Controllers
 {
@@ -45,6 +46,12 @@ namespace Identity_2_2.Controllers
         public IActionResult AreaRestritaPodeEscrever()
         {
             return View();
+        }
+
+        [ClaimsAuthorize("Custom", "Ler")] // #2 Criar o authorize
+        public IActionResult AreaRestritaCustom() // #1 Criar um método
+        {
+            return View("AreaRestrita");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
