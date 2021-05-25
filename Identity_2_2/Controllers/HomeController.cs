@@ -16,11 +16,13 @@ namespace Identity_2_2.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
+
             return View();
         }
 
         public IActionResult Privacy()
         {
+            throw new Exception("Erro");
             return View();
         }
 
@@ -54,10 +56,34 @@ namespace Identity_2_2.Controllers
             return View("AreaRestrita");
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [Route("erro/{id:length(3,3)}")]
+        public IActionResult Error(int id)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var modelError = new ErrorViewModel();
+
+            if (id == 500)
+            {
+                modelError.Mensagem = ("Ocorreu um erro em nosso servidor");
+                modelError.Titulo = ("Erro 500");
+                modelError.ErroCode = id;
+            }
+            else if(id == 403)
+            {
+                modelError.Mensagem = ("Você não tem permissão para acessar esta página");
+                modelError.Titulo = ("Acesso Negado");
+                modelError.ErroCode = id;
+            }
+            else if(id == 404)
+            {
+                modelError.Mensagem = ("Página não localizada");
+                modelError.Titulo = ("Erro 404");
+                modelError.ErroCode = id;
+            }
+            else
+            {
+                return StatusCode(404);
+            }
+            return View("Error", modelError);
         }
     }
 }
