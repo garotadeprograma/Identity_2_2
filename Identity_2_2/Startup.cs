@@ -1,4 +1,5 @@
 ﻿using Identity_2_2.Areas.Identity.Data;
+using Identity_2_2.Config;
 using Identity_2_2.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -20,46 +21,35 @@ namespace Identity_2_2
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        public Startup(IHostingEnvironment hostEnvironment)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(hostEnvironment.ContentRootPath)
+                .AddJsonFile("appsettings.json", true, true)
+                .AddJsonFile($"appsettings.{ hostEnvironment.EnvironmentName}.json", true, true)
+                .AddEnvironmentVariables();
+
+            if (hostEnvironment.IsProduction())
+            {
+                builder.AddUserSecrets<Startup>();
+            }
+
+            Configuration = builder.Build();
+        }       
+
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
+            services.AddIdentityConfig(Configuration);
 
-            services.AddDbContext<AppIdentityContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("AppIdentityContextConnection")));
+            services.AddAuthorizationConfig();
 
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddDefaultUI(Microsoft.AspNetCore.Identity.UI.UIFramework.Bootstrap4)
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<AppIdentityContext>();
-
-            services.AddAuthorization(options =>
-                {
-                    options.AddPolicy("PodeExcluir", policy => policy.RequireClaim("PodeExcluir"));
-
-                    options.AddPolicy("PodeLer", policy => policy.Requirements.Add(new PermissaoNecessaria("PodeLer")));
-
-                    options.AddPolicy("PodeEscrever", policy => policy.Requirements.Add(new PermissaoNecessaria("PodeEscrever")));
-                });
-
-            services.AddSingleton<IAuthorizationHandler, PermissaoNecessariaHandler>();
+            services.ResolveDependencies();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
