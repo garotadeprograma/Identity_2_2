@@ -1,21 +1,9 @@
-﻿using Identity_2_2.Areas.Identity.Data;
-using Identity_2_2.Config;
-using Identity_2_2.Extensions;
-using Microsoft.AspNetCore.Authorization;
+﻿using Identity_2_2.Config;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using static Identity_2_2.Extensions.PermissaoNecessaria;
 
 namespace Identity_2_2
 {
@@ -33,7 +21,7 @@ namespace Identity_2_2
 
             if (hostEnvironment.IsProduction())
             {
-                builder.AddUserSecrets<Startup>();
+                builder.AddUserSecrets<Startup>();                                  
             }
 
             Configuration = builder.Build();
@@ -59,7 +47,6 @@ namespace Identity_2_2
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
